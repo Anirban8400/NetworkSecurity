@@ -1,6 +1,0 @@
-[2025-09-07 01:13:50,197] 14 root - INFO - Initiated data ingestion
-[2025-09-07 01:13:54,715] 58 root - INFO - Performed train test split
-[2025-09-07 01:13:54,715] 59 root - INFO - Train set: (8844, 31)
-[2025-09-07 01:13:54,715] 60 root - INFO - Test set: (2211, 31)
-[2025-09-07 01:13:54,716] 65 root - INFO - Exporting training and testing data
-[2025-09-07 01:13:54,772] 68 root - INFO - Exported training and testing data
