@@ -54,3 +54,49 @@ def write_yaml_file(file_path:str, content: object, replace:bool=False)->None:
         logging.info(f"YAML file '{file_path}' written successfully.")
     except Exception as e:
         raise NetworkSecurityException(e, sys)
+    
+
+def save_numpy_array_data(file_path:str, array:np.array)->None:
+    """
+    Saves a numpy array to a file.
+
+    Args:
+        file_path (str): The path to the file where the array will be saved.
+        array (np.array): The numpy array to save.
+
+    Raises:
+        NetworkSecurityException: If there is an error saving the array.
+    """
+    try:
+        dir_path = os.path.dirname(file_path)   #create directory path
+        os.makedirs(dir_path, exist_ok=True)     #make that directory in the above path if not exists
+        with open(file_path, 'wb') as file_obj:            
+            np.save(file_obj, array)               #save numpy array to that file
+
+        print(f"Numpy array saved successfully at '{file_path}'.")
+        logging.info(f"Numpy array saved successfully at '{file_path}'.")
+    except Exception as e:
+        raise NetworkSecurityException(e, sys) from e
+    
+def save_object(file_path:str, obj:object)->None:
+    """
+    Saves a Python object to a file using dill.
+
+    Args:
+        file_path (str): The path to the file where the object will be saved.
+        obj (object): The Python object to save.
+
+    Raises:
+        NetworkSecurityException: If there is an error saving the object.
+    """
+    try:
+        logging.info("Entered the save_object method of utils")
+        dir_path = os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+        with open(file_path, 'wb') as file_obj:
+            dill.dump(obj, file_obj)
+
+        print(f"Object saved successfully at '{file_path}'.")
+        logging.info(f"Object saved successfully at '{file_path}'.")
+    except Exception as e:
+        raise NetworkSecurityException(e, sys) from e
